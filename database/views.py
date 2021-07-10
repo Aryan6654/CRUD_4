@@ -27,9 +27,10 @@ def update_data(request, id):
     if request.method == 'POST':
         ef = User.objects.get(pk=id)
         fm = EmployeeRegistrations(request.POST, instance=ef)
-        if fm.is_valid:
+        if fm.is_valid():
+            nm = fm.cleaned_data['name']
             fm.save()
-            messages.success(request, 'name')
+            messages.success(request, nm)
     else:
         ef = User.objects.get(pk=id)
         fm = EmployeeRegistrations(instance=ef)
