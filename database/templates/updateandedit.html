@@ -7,10 +7,10 @@
 
     <button type="submit">Submit</button>
     <a href="{% url 'add' %}">Back To Home</a>
-    {% if messages %}
+    {% comment %} {% if messages %}
             {% for message in messages %}
-            <div class="{{ message.tags }}">{{ message }} Your Details Has Been Saved</div>
+            <div class="{{ message.tags }}">{{ message }} Your Details Has Been Updated</div>
             {% endfor %}
-    {% endif %}
+    {% endif %} {% endcomment %}
 </form>
 {% endblock body %}
