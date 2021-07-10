@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<form action="" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+
+    <button type="submit">Submit</button>
+</form>
+
+        <h4>Show Employee Information</h4>
+        {% if sho %}
+         <table>
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for sh in sho %}
+                <tr>
+                    <th scope="row">{{sh.id}}</th>
+                    <td>{{sh.name}}</td>
+                    <td>{{sh.email}}</td>
+                    <td>{{sh.address}}</td>
+                    <td>
+                        <a href="{% url 'updatedata' sh.id %}">Edit</a>
+                        <form action="{% url 'deletedata' sh.id %}" method="post">
+                            {% csrf_token %}
+                            <input type="submit" value="Delete">
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+           </tbody>
+        </table>
+        
+        {% else %}
+        <h4>No Records</h4>
+        {% endif %}
+{% endblock body %}
