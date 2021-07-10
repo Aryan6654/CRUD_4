@@ -1,16 +1,18 @@
 {% extends 'base.html' %}
 
 {% block body %}
+
+{% if messages %}
+            {% for message in messages %}
+            <div class="{{ message.tags }}">{{ message }} Your Details Has Been Updated</div>
+            {% endfor %}
+    {% endif %}
+
 <form action="" method="post">
     {% csrf_token %}
     {{form.as_p}}
 
     <button type="submit">Submit</button>
     <a href="{% url 'add' %}">Back To Home</a>
-    {% comment %} {% if messages %}
-            {% for message in messages %}
-            <div class="{{ message.tags }}">{{ message }} Your Details Has Been Updated</div>
-            {% endfor %}
-    {% endif %} {% endcomment %}
 </form>
 {% endblock body %}

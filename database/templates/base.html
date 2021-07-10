@@ -10,12 +10,6 @@
 </head>
 <body>
 
-    {% if messages %}
-            {% for message in messages %}
-            <div class="{{ message.tags }}">{{ message }} Your Details Has Been Saved</div>
-            {% endfor %}
-    {% endif %}
-
     {% block body %}{% endblock body %}
 </body>
 </html>
